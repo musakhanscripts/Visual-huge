@@ -6,18 +6,18 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 -- Declare variables
 local eggHatched = false -- Whether the egg has been hatched or not
 local cupidEggName = "Cupid Egg" -- The name of the egg
-local hugeValentineBearSize = Vector3.new(5, 10, 5) -- Size of the Huge Valentine Bear model (adjust as needed)
+local hugeValentineBearSize = Vector3.new(5, 10, 5) -- Size of the Huge Valentine's Bear model (adjust as needed)
 
--- Function to simulate hatching the egg and show the Huge Valentine Bear
+-- Function to simulate hatching the egg and show the Huge Valentine's Bear
 local function hatchEgg()
     if not eggHatched then
         eggHatched = true
         
-        -- Create the Huge Valentine Bear model directly in the game
+        -- Create the Huge Valentine's Bear model directly in the game
         local hugeValentineBear = Instance.new("Model")
-        hugeValentineBear.Name = "Huge Valentine Bear"
+        hugeValentineBear.Name = "Huge Valentine's Bear"
         
-        -- Create a simple part to represent the Huge Valentine Bear (you can add more parts for details)
+        -- Create a simple part to represent the Huge Valentine's Bear (you can add more parts for details)
         local bearPart = Instance.new("Part")
         bearPart.Name = "Body"
         bearPart.Size = hugeValentineBearSize
@@ -27,21 +27,23 @@ local function hatchEgg()
         bearPart.BrickColor = BrickColor.new("Bright red") -- You can customize the color
         bearPart.Parent = hugeValentineBear
 
-        -- You can add more parts for legs, head, etc., to make the bear more complex
+        -- Create the head part of the Huge Valentine's Bear
         local bearHead = Instance.new("Part")
         bearHead.Name = "Head"
         bearHead.Size = Vector3.new(4, 4, 4)
         bearHead.Position = bearPart.Position + Vector3.new(0, 6, 0)
         bearHead.Anchored = true
         bearHead.CanCollide = false
-        bearHead.BrickColor = BrickColor.new("Bright pink") -- Customize color
+        bearHead.BrickColor = BrickColor.new("Bright pink") -- Customize color for head
         bearHead.Parent = hugeValentineBear
         
         -- Parent the model to the workspace to make it visible in the game world
         hugeValentineBear.Parent = game.Workspace
         
         -- Display message to player
-        print("You hatched the Huge Valentine Bear!")
+        print("You hatched the Huge Valentine's Bear!")
+        
+        -- Optional: Play a sound or animation when the bear appears (you can add this feature)
     else
         print("The egg has already been hatched!")
     end
