@@ -1,0 +1,53 @@
+-- LocalScript for the TextButton (inside the ScreenGui)
+local button = script.Parent
+local player = game.Players.LocalPlayer
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Declare variables
+local eggHatched = false -- Whether the egg has been hatched or not
+local cupidEggName = "Cupid Egg" -- The name of the egg
+local hugeValentineBearSize = Vector3.new(5, 10, 5) -- Size of the Huge Valentine Bear model (adjust as needed)
+
+-- Function to simulate hatching the egg and show the Huge Valentine Bear
+local function hatchEgg()
+    if not eggHatched then
+        eggHatched = true
+        
+        -- Create the Huge Valentine Bear model directly in the game
+        local hugeValentineBear = Instance.new("Model")
+        hugeValentineBear.Name = "Huge Valentine Bear"
+        
+        -- Create a simple part to represent the Huge Valentine Bear (you can add more parts for details)
+        local bearPart = Instance.new("Part")
+        bearPart.Name = "Body"
+        bearPart.Size = hugeValentineBearSize
+        bearPart.Position = player.Character.HumanoidRootPart.Position + Vector3.new(5, 5, 0)  -- Position relative to the player
+        bearPart.Anchored = true
+        bearPart.CanCollide = false
+        bearPart.BrickColor = BrickColor.new("Bright red") -- You can customize the color
+        bearPart.Parent = hugeValentineBear
+
+        -- You can add more parts for legs, head, etc., to make the bear more complex
+        local bearHead = Instance.new("Part")
+        bearHead.Name = "Head"
+        bearHead.Size = Vector3.new(4, 4, 4)
+        bearHead.Position = bearPart.Position + Vector3.new(0, 6, 0)
+        bearHead.Anchored = true
+        bearHead.CanCollide = false
+        bearHead.BrickColor = BrickColor.new("Bright pink") -- Customize color
+        bearHead.Parent = hugeValentineBear
+        
+        -- Parent the model to the workspace to make it visible in the game world
+        hugeValentineBear.Parent = game.Workspace
+        
+        -- Display message to player
+        print("You hatched the Huge Valentine Bear!")
+    else
+        print("The egg has already been hatched!")
+    end
+end
+
+-- Button click event to toggle and hatch the egg
+button.MouseButton1Click:Connect(function()
+    hatchEgg() -- Simulate hatching the egg and showing the visual
+end)
